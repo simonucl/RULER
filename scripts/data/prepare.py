@@ -98,7 +98,7 @@ def main():
     try:
         script = os.path.join(curr_folder, args.benchmark, f"{config['task']}.py")
         additional_args = " ".join([f"--{k} {v}" for k, v in config['args'].items()])
-        command = f"""python {script} \
+        command = f"""python3 {script} \
         --save_dir  {args.save_dir} \
         --save_name {args.task} \
         --subset {args.subset} \

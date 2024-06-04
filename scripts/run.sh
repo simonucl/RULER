@@ -23,10 +23,10 @@ fi
 
 
 # Root Directories
-GPUS="" # GPU size for tensor_parallel.
-ROOT_DIR="" # the path that stores generated task samples and model predictions. 
-MODEL_DIR="" # the path that contains individual model folders from HUggingface.
-ENGINE_DIR="" # the path that contains individual engine folders from TensorRT-LLM.
+GPUS="2" # GPU size for tensor_parallel.
+ROOT_DIR="/mnt/data/RULER" # the path that stores generated task samples and model predictions. 
+MODEL_DIR="/mnt/nfs/public/hf/models" # the path that contains individual model folders from HUggingface.
+ENGINE_DIR="vllm" # the path that contains individual engine folders from TensorRT-LLM.
 
 
 # Model and Tokenizer
@@ -59,7 +59,7 @@ fi
 
 # Start server (you may want to run in other container.)
 if [ "$MODEL_FRAMEWORK" == "vllm" ]; then
-    python pred/serve_vllm.py \
+    python3 pred/serve_vllm.py \
         --model=${MODEL_PATH} \
         --tensor-parallel-size=${GPUS} \
         --dtype bfloat16 \
@@ -67,7 +67,7 @@ if [ "$MODEL_FRAMEWORK" == "vllm" ]; then
         &
 
 elif [ "$MODEL_FRAMEWORK" == "trtllm" ]; then
-    python pred/serve_trt.py \
+    python3 pred/serve_trt.py \
         --model_path=${MODEL_PATH} \
         &
 fi
@@ -83,7 +83,7 @@ for MAX_SEQ_LENGTH in "${SEQ_LENGTHS[@]}"; do
     mkdir -p ${PRED_DIR}
     
     for TASK in "${TASKS[@]}"; do
-        python data/prepare.py \
+        python3 data/prepare.py \
             --save_dir ${DATA_DIR} \
             --benchmark ${BENCHMARK} \
             --task ${TASK} \
@@ -94,7 +94,7 @@ for MAX_SEQ_LENGTH in "${SEQ_LENGTHS[@]}"; do
             --num_samples ${NUM_SAMPLES} \
             ${REMOVE_NEWLINE_TAB}
         
-        python pred/call_api.py \
+        python3 pred/call_api.py \
             --data_dir ${DATA_DIR} \
             --save_dir ${PRED_DIR} \
             --benchmark ${BENCHMARK} \
@@ -107,7 +107,7 @@ for MAX_SEQ_LENGTH in "${SEQ_LENGTHS[@]}"; do
             ${STOP_WORDS}
     done
     
-    python eval/evaluate.py \
+    python3 eval/evaluate.py \
         --data_dir ${PRED_DIR} \
         --benchmark ${BENCHMARK}
 done

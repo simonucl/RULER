@@ -24,6 +24,9 @@ SEQ_LENGTHS=(
     4096
 )
 
+SEQ_LENGTHS=(
+	4096
+)
 MODEL_SELECT() {
     MODEL_NAME=$1
     MODEL_DIR=$2
@@ -35,6 +38,11 @@ MODEL_SELECT() {
             MODEL_TEMPLATE_TYPE="meta-chat"
             MODEL_FRAMEWORK="vllm"
             ;;
+	mistral-7b-instruct)
+		MODEL_PATH="${MODEL_DIR}/mistralai/Mistral-7B-Instruct-v0.2"
+		MODEL_TEMPLATE_TYPE="meta-chat"
+		MODEL_FRAMEWORK="vllm"
+	    ;;
         gpt-3.5-turbo)
             MODEL_PATH="gpt-3.5-turbo-0125"
             MODEL_TEMPLATE_TYPE="base"
