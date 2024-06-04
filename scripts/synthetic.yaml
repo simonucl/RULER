@@ -92,6 +92,26 @@ niah_multiquery:
     num_needle_v: 1
     num_needle_q: 4
 
+niah_noise_1:
+  task: niah
+  args:
+    type_haystack: needle
+    type_needle_k: uuids
+    type_needle_v: uuids
+    num_needle_k: 1
+    num_needle_v: 1
+    num_needle_q: 1
+
+niah_noise_2:
+  task: niah
+  args:
+    type_haystack: needle
+    type_needle_k: uuids
+    type_needle_v: uuids
+    num_needle_k: 4
+    num_needle_v: 1
+    num_needle_q: 1
+
 vt:
   task: variable_tracking
   args:

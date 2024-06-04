@@ -123,6 +123,7 @@ def generate_random(type_needle: str):
 
 def generate_input_output(num_haystack):
     keys, values, needles = [], [], []
+    # This part create the needles
     for _ in range(args.num_needle_k):
         keys.append(generate_random(args.type_needle_k))
         value = []
@@ -137,6 +138,7 @@ def generate_input_output(num_haystack):
     
     random.Random(args.random_seed).shuffle(needles)
     
+    # THis part creates the haystack for inserting the needles
     # Context
     if args.type_haystack == 'essay':
         text = " ".join(haystack[:num_haystack])

@@ -44,3 +44,9 @@ synthetic=(
     "qa_1"
     "qa_2"
 )
+
+synthetic=(
+    "niah_multikey_3"
+    "niah_noise_1"
+    "niah_noise_2"
+)

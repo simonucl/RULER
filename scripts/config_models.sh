@@ -26,7 +26,12 @@ SEQ_LENGTHS=(
 
 SEQ_LENGTHS=(
 	4096
+    8192
+    16384
+    32768
+    65536
 )
+
 MODEL_SELECT() {
     MODEL_NAME=$1
     MODEL_DIR=$2
@@ -38,11 +43,26 @@ MODEL_SELECT() {
             MODEL_TEMPLATE_TYPE="meta-chat"
             MODEL_FRAMEWORK="vllm"
             ;;
-	mistral-7b-instruct)
-		MODEL_PATH="${MODEL_DIR}/mistralai/Mistral-7B-Instruct-v0.2"
-		MODEL_TEMPLATE_TYPE="meta-chat"
-		MODEL_FRAMEWORK="vllm"
-	    ;;
+        mistral-7b-instruct)
+            MODEL_PATH="${MODEL_DIR}/mistralai/Mistral-7B-Instruct-v0.2"
+            MODEL_TEMPLATE_TYPE="meta-chat"
+            MODEL_FRAMEWORK="vllm"
+            ;;
+        phi-3-mini-128k-instruct)
+            MODEL_PATH="microsoft/Phi-3-mini-128k-instruct"
+            MODEL_TEMPLATE_TYPE="phi-3"
+            MODEL_FRAMEWORK="vllm"
+            ;;
+        phi-3-medium-128k-instruct)
+            MODEL_PATH="microsoft/Phi-3-medium-128k-instruct"
+            MODEL_TEMPLATE_TYPE="phi-3"
+            MODEL_FRAMEWORK="vllm"
+            ;;
+        yarn-llama2-7b)
+            MODEL_PATH="NousResearch/Yarn-Llama-2-7b-128k"
+            MODEL_TEMPLATE_TYPE="base"
+            MODEL_FRAMEWORK="hf"
+            ;;
         gpt-3.5-turbo)
             MODEL_PATH="gpt-3.5-turbo-0125"
             MODEL_TEMPLATE_TYPE="base"
