@@ -30,6 +30,7 @@ SEQ_LENGTHS=(
     16384
     32768
     65536
+    131072
 )
 
 MODEL_SELECT() {
