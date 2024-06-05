@@ -5,5 +5,5 @@ MODEL_PATHS=(
 
 for MODEL_PATH in "${MODEL_PATHS[@]}"; do
     echo "Running model: ${MODEL_PATH}"
-    bash run.sh $MODEL_PATH synthetic_adv
+    bash run.sh $MODEL_PATH synthetic
 done
