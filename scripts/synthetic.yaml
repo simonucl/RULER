@@ -112,6 +112,28 @@ niah_noise_2:
     num_needle_v: 1
     num_needle_q: 1
 
+niah_adv_1:
+  task: niah
+  args:
+    type_haystack: essay
+    type_needle_k: words
+    type_needle_v: numbers
+    num_needle_k: 1
+    num_needle_v: 1
+    num_needle_q: 1
+    is_adv: true
+
+niah_adv_2:
+  task: niah
+  args:
+    type_haystack: repeat
+    type_needle_k: words
+    type_needle_v: numbers
+    num_needle_k: 1
+    num_needle_v: 1
+    num_needle_q: 1
+    is_adv: true
+
 vt:
   task: variable_tracking
   args:

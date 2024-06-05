@@ -46,7 +46,8 @@ synthetic=(
 )
 
 synthetic=(
-    "niah_multikey_3"
-    "niah_noise_1"
-    "niah_noise_2"
+    "niah_adv_1"
+    "niah_single_1"
+    "niah_adv_2"
+    "niah_single_2"
 )
